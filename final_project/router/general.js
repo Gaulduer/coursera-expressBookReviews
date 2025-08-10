@@ -5,11 +5,7 @@ let users = require("./auth_users.js").users;
 const public_users = express.Router();
 
 const userExists = (username) => {
-  for(let i = 0 ; i < users.length ; i++)
-    if(users[i].username === username)
-      return true;
 
-  return false;
 }
 
 public_users.post("/register", (req,res) => {
@@ -19,7 +15,7 @@ public_users.post("/register", (req,res) => {
     // Check if both username and password are provided
     if (username && password) {
         // Check if the user does not already exist
-        if(userExists(username))
+        if(isValid(username))
             return res.status(404).send("User already exists!");
 
         // Add the new user to the users array
