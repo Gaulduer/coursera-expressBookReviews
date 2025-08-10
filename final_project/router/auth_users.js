@@ -65,7 +65,7 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
   book["reviews"][username] = review;
 
-  return res.status(300).send("Review for book with isbn " + isbn + " has been posted by " + username + ".\n");
+  return res.status(200).send("Review for book with isbn " + isbn + " has been posted by " + username + ".\n");
 });
 
 regd_users.delete("/auth/review/:isbn", (req, res) => {
@@ -78,7 +78,7 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
 
   delete book["reviews"][username];
 
-  return res.status(300).send("Review for book with isbn " + isbn + " has been deleted.\n");
+  return res.status(200).send("Review for book with isbn " + isbn + " has been deleted.\n");
 });
 
 module.exports.authenticated = regd_users;
